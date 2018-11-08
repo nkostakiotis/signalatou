@@ -1,0 +1,28 @@
+#mainPanel {
+    height: 800px;
+    width: 1200px;
+    background-color: #008ecc;
+}
+
+.playerNames {
+    color: white;
+}
+
+.card {
+    height: 200px;
+    width: 200px;
+    background-color: rgb(220, 220, 220);
+}
+
+#player1 {
+    margin-bottom: 10px;
+}
+
+#player2 {
+
+}
+
+#next {
+    background-color: white;
+    color: #008ecc;
+}
