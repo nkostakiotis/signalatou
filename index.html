@@ -9,15 +9,30 @@
     <meta name="author" content="SitePoint" />
 
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="data/data.js"></script>
   </head>
 
-  <body onload="createCards()">
+  <body onload="fetchData()", onclick="startMusic()">
     <div id="mainPanel">
-      <div class="playerNames">Player 1</div>
-      <div class="playerNames">Player 2</div>
+      <div class="playerNames">Player 1<div id='player1wins'></div></div>
+      <div class="playerNames">Player 2<div id='player2wins'></div></div>
       <div id="deck"></div>
-      <button id="next">Next</button>
+      <button id="next" onclick="createCards()" disabled=true>Next</button>
+      <div id="message"></div>
     </div>
     <script src="js/script.js"></script>
   </body>
 </html>
+
+<!-- <div id="playerOneCards">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+<div id="playerTwoCards">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div> -->
