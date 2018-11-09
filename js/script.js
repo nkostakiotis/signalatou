@@ -88,7 +88,8 @@ function onPropertyClick(event) {
     properties[i].classList.add("disabled");
   }
 
-  document.getElementById('player2').style.visibility = 'visible';
+  document.getElementById('player2').classList.remove('hide'); // here
+  document.getElementById('vaggelisCard').classList.add('hide');
   document.getElementById('message').innerHTML = message;
 
   currentPlayerProperty.classList.add('blue');
@@ -148,9 +149,20 @@ function createCard(id, data) {
   createCardContent(id, card, data);
 
   if (id == "player2") {
-      card.style.visibility = "hidden";
+      document.getElementById('player2').classList.add('hide');
   }
   document.getElementById('nextButton').disabled = true;
+}
+
+function createEmptyCard() {
+  var card = document.createElement("div");
+
+  card.setAttribute("class", "card");
+  card.setAttribute("id", "vaggelisCard");
+
+  document.getElementById("deck").appendChild(card);
+
+  createCardContent(id, card, data);
 }
 
 function createCards() {
@@ -161,6 +173,7 @@ function createCards() {
   if(remainCards > 0) {
     createCard("player1", firstArray);
     createCard("player2", secondArray);
+    createEmptyCard();
   }
   else {
     saveWinningGame();
