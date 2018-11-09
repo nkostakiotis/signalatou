@@ -162,7 +162,6 @@ function createEmptyCard() {
 
   document.getElementById("deck").appendChild(card);
 
-  createCardContent(id, card, data);
 }
 
 function createCards() {
