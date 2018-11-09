@@ -56,7 +56,7 @@ function onPropertyClick(event) {
   var currentPlayerProperty = currentPlayersCards.getElementsByTagName("span")[key];
   var currentPlayerPropertyValue = currentPlayerProperty.innerHTML;
 
-  var message = "Isopalia";
+  var message = "Draw!";
   if (opponentPropertyValue == currentPlayerPropertyValue){
 
   } else if (value > opponentPropertyValue || value.trim() == "Laden") {
@@ -200,7 +200,7 @@ function assignPlayerOneId(id) {
 
 function assignPlayerTwo(player) {
   console.log(player);
-  playerTwoName = player.playerName + ` (${player.numberOfWins} wins)`;
+  playerTwoName = player.playerName + ` (${player.numberOfWins} total wins)`;
   playerTwoIdFromDB = player.id;
   renderPlayerNames();
 }

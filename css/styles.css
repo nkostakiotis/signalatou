@@ -3,21 +3,21 @@ body {
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
-    color: #53545A;    
+    color: #53545A;
     background-color: #f6f7f8;
 }
-button, button:focus,
-input, input:focus {
+
+button,
+button:focus,
+input,
+input:focus {
     outline: none;
 }
 
-.startGame{
+.startGame {
     width: 1200px;
-    background-color: #ffffff;
-    margin: 20px auto;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 0 30px 0 #D9D9DA;
+    margin: 10px auto;
+    padding: 20px;
     text-align: center;
 }
 
@@ -25,7 +25,7 @@ input {
     background: #ffffff;
     border-radius: 3px;
     border: solid 1px #3085e6;
-    color:  #3085e6;
+    color: #53545A;
     font-size: 18px;
     font-weight: 700;
     margin: 30px auto 10px auto;
@@ -34,44 +34,56 @@ input {
     width: 500px;
     font-family: 'Lato', sans-serif;
 }
+
+label {
+    font-weight: 700;
+    font-size: 28px;
+    color: #203468;
+}
+
 ::-webkit-input-placeholder {
     color: #bebebe;
     opacity: 1;
-  }
-  
-  :-ms-input-placeholder {
+}
+
+:-ms-input-placeholder {
     color: #bebebe;
     opacity: 1;
-  }
-  
-  ::-ms-input-placeholder {
+}
+
+::-ms-input-placeholder {
     color: #bebebe;
     opacity: 1;
-  }
-  
-  ::placeholder {
+}
+
+::placeholder {
     color: #bebebe;
     opacity: 1;
-  }
+}
+
 #mainPanel {
-    height: 800px;
-    width: 1200px;
+    width: 1050px;
     background-color: #ffffff;
     margin: 20px auto;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 0 30px 0 #D9D9DA;
 }
+
 .playerNames {
-    color: rgba(73,74,75,1);
+    color: rgba(73, 74, 75, 1);
     font-size: 21px;
     display: inline-block;
-    width: 480px;
+    width: 470px;
+    margin-right: 50px
 }
-#player1wins, #player2wins {
+
+#player1wins,
+#player2wins {
     display: inline-block;
     margin-left: 10px;
 }
+
 .card {
     width: 400px;
     background-color: #ffffff;
@@ -80,22 +92,28 @@ input {
     padding: 20px;
     display: inline-block;
     margin: 20px;
+    margin-right: 50px
 }
+
 .cardProperties {
     border-bottom: 1px solid #f6f7f8;
     padding: 10px 0;
     color: #203468;
 }
+
 .cardProperties span {
     font-weight: bold;
     text-align: right;
 }
+
 #player1 {
     margin-bottom: 10px;
 }
-#player2 {
-}
-#nextButton, #startButton {
+
+#player2 {}
+
+#nextButton,
+#startButton {
     background: #4da4fa;
     border-radius: 3px;
     border: solid 1px #3085e6;
@@ -108,13 +126,22 @@ input {
     text-align: center;
     width: 200px;
     font-family: 'Lato', sans-serif;
+    display: block;
+    width: 300px;
 }
-#nextButton:hover, #startButton {
+
+#startButton {
+    width: 528px;
+    margin-top: 0;
+}
+
+#nextButton:hover,
+#startButton:hover {
     background: #3085e6;
     border: solid 1px #3085e6;
-  }
-  
-  .arrow {
+}
+
+.arrow {
     display: inline-block;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
@@ -122,33 +149,45 @@ input {
     width: 6px;
     height: 6px;
     -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-  }
+    transform: rotate(-45deg);
+}
+
 .disabled {
     pointer-events: none;
 }
+
 .blue::after {
     content: "\1F44D";
     margin-left: 20px;
 }
+
 .red::after {
     content: "\1F44E";
     margin-left: 20px;
 }
+
 #vesselNameContainer {
     font-weight: 700;
     font-size: 21px;
     color: #203468;
 }
+
 #companyNameContainer {
     color: #666766;
-    
 }
+
 #vesselClassContainer {
     color: #bbbbbb;
     font-size: 13px;
     text-align: right;
 }
+
 .hide {
     display: none;
+}
+
+#message {
+    font-weight: 700;
+    font-size: 21px;
+    color: #203468;
 }
