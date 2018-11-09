@@ -1,11 +1,16 @@
 var firstArray = [];
 var secondArray = [];
 
+var playerOneName;
+var playerTwoName;
+var playerOneIdFromDB;
+var playerTwoIdFromDB;
 var players = ["player1", "player2"];
 var wins = [{ id: "player1", wins: 0 }, { id: "player2", wins: 0 }];
 
 var vesselData = [];
 var myMusic;
+
 
 function sound(src) {
     this.sound = document.createElement("audio");
@@ -158,10 +163,13 @@ function createCards() {
     createCard("player2", secondArray);
   }
   else {
+    saveWinningGame();
+    getLeaderBoard();
     document.getElementById('endGamePanel').classList.remove('hide');
     document.getElementById('mainPanel').classList.add('hide');
   }
 }
+
 
 function startMusic() {
     myMusic.play();
@@ -174,10 +182,7 @@ function initializeGame() {
   createCards();
 }
 
-var playerOneName;
-var playerTwoName;
-var playerOneIdFromDB;
-var playerTwoIdFromDB;
+
 
 function onStartButtonClick() {
   playerOneName = document.getElementsByTagName('input')[0].value;
@@ -193,8 +198,10 @@ function assignPlayerOneId(id) {
   getOpponent(playerOneIdFromDB);
 }
 
-function assignPlayer(player) {
-  console.log("player ", player);
+function assignPlayerTwo(player) {
+  console.log(player);
+  playerTwoName = player.playerName + ` (${player.numberOfWins} wins)`;
+  playerTwoIdFromDB = player.id;
   renderPlayerNames();
 }
 
@@ -203,12 +210,57 @@ function getOpponent(id) {
   const urlOpponent = `https://192.168.10.49/api/v1/HackTyphoon/Players/Random/${id}`;
   fetch(urlOpponent, { method: 'GET' })
     .then(response => response.json())
-    .then(data => assignPlayer(data))
+    .then(data => assignPlayerTwo(data))
     .catch(err => { console.log(err.message) });
 }
 
 function renderPlayerNames() {
   document.getElementById('playerOneId').innerHTML = `${playerOneName}<div id='player1wins'>`;
   document.getElementById('playerTwoId').innerHTML = `${playerTwoName}<div id='player2wins'>`;
-  // document.getElementById('playerTwoId').innerHTML = playerTwoName;
+}
+
+
+function assignPlayerOneId(id) {
+  playerOneIdFromDB = id;
+  getOpponent(playerOneIdFromDB);
+}
+
+
+function getLeaderBoard() {
+  
+  const url = `https://192.168.10.49/api/v1/HackTyphoon/Players/Rank`;
+
+  fetch(url, { method: 'GET' })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      fillLeaderBoard(data);
+    });
+
+}
+function fillLeaderBoard(data){
+  var leaderinner="<table><th>Leader Board<th>";
+  var newData = data;
+
+  if(data.length > 5) {
+    newData = data.slice(0, 5);
+  }
+
+  newData.forEach(w => {
+    leaderinner+= "<tr><td>" + w.playerName + "</td><td>"+w.numberOfWins +"</td></tr>";
+     });
+     leaderinner +="</table>";
+  document.getElementById('LeaderBoard').innerHTML = `${leaderinner}`;
+}
+
+function saveWinningGame(playerOneIdFromDB, playerTwoIdFromDB){
+  const urlSaveGame = `https://192.168.10.49/api/v1/HackTyphoon/Games/New`;
+  var dataToSave = "{\"Player1ID\":"+`${playerOneIdFromDB}`+",\"Player2ID\":"+`${playerTwoIdFromDB}`+",\"WinPlayerID\":3}";
+  console.log(dataToSave);
+  fetch(urlSaveGame, { 
+    method: 'POST',
+    body:`"data": "${dataToSave}"` })
+    .then(response => response.json())
+    .then(data => assignPlayerTwo(data))
+    .catch(err => { console.log(err.message) });
 }
