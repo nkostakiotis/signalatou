@@ -1,56 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+body {
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    color: #53545A;    
+    background-color: #f6f7f8;
+}
+button {
+    outline: none;
+}
 #mainPanel {
     height: 800px;
     width: 1200px;
-    background-color: #008ecc;
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px 0 #D9D9DA;
 }
-
 .playerNames {
-    color: white;
+    color: rgba(73,74,75,1);
+    font-size: 21px;
+    display: inline-block;
+    width: 480px;
 }
-
+#player1wins, #player2wins {
+    display: inline-block;
+    margin-left: 10px;
+}
 .card {
-    height: 200px;
-    width: 200px;
-    background-color: rgb(220, 220, 220);
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 30px 0 #D9D9DA;
+    border-radius: 8px;
+    padding: 20px;
+    display: inline-block;
+    margin: 20px;
 }
-
 .cardProperties {
-    border: 1px solid rgb(220, 220, 220);
+    border-bottom: 1px solid #f6f7f8;
+    padding: 10px 0;
+    color: #203468;
 }
-
+.cardProperties span {
+    font-weight: bold;
+    text-align: right;
+}
 #player1 {
     margin-bottom: 10px;
 }
-
 #player2 {
-
 }
-
 #next {
-    background-color: white;
-    color: #008ecc;
+    background: #4da4fa;
+    border-radius: 3px;
+    border: solid 1px #3085e6;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 30px auto;
+    padding: 12px;
+    text-align: center;
+    width: 200px;
+    font-family: 'Lato', sans-serif;
 }
-
+#nextButton:hover {
+    background: #3085e6;
+    border: solid 1px #3085e6;
+  }
+  
+  .arrow {
+    display: inline-block;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    vertical-align: middle;
+    width: 6px;
+    height: 6px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
 .disabled {
     pointer-events: none;
 }
-
-.blue {
-    border: 1px solid blue;
+.blue::after {
+    content: "\1F44D";
+    margin-left: 20px;
 }
-
-.red {
-    border: 1px solid red;
+.red::after {
+    content: "\1F44E";
+    margin-left: 20px;
 }
-
 #vesselNameContainer {
-
+    font-weight: 700;
+    font-size: 21px;
+    color: #203468;
 }
-
 #companyNameContainer {
+    color: #666766;
     
 }
-
 #vesselClassContainer {
-    
+    color: #bbbbbb;
+    font-size: 13px;
+    text-align: right;
+}
+.hide {
+    display: none;
 }

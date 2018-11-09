@@ -13,13 +13,15 @@
   </head>
 
   <body onload="fetchData()", onclick="startMusic()">
-    <div id="mainPanel">
-      <div class="playerNames">Player 1<div id='player1wins'></div></div>
-      <div class="playerNames">Player 2<div id='player2wins'></div></div>
+    <div id="startGamePanel"><input placeholder="Select a name to play.."/><button id="startButton" onclick="initializeGame()">start</button></div>
+    <div id="mainPanel" class="hide">
+      <div id="playerOneId" class="playerNames">Player 1<span id='player1wins'></span></div>
+      <div id="playerTwoId" class="playerNames">Player 2<span id='player2wins'></span></div>
       <div id="deck"></div>
-      <button id="next" onclick="createCards()" disabled=true>Next</button>
+      <button id="nextButton" onclick="createCards()" disabled=true>Next <span class="arrow"> </span></button>
       <div id="message"></div>
     </div>
+    <div id="endGamePanel" class="hide">End Game!</div>
     <script src="js/script.js"></script>
   </body>
 </html>

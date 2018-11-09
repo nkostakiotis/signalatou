@@ -30,7 +30,6 @@ function fetchData() {
         vesselData = data;
         firstArray = vesselData.slice(0, vesselData.length / 2);
         secondArray = vesselData.slice(vesselData.length / 2, vesselData.length);
-        createCards();
     }).catch(err => {
         console.log(err.message);
     });
@@ -90,7 +89,7 @@ function onPropertyClick(event) {
 
   currentPlayerProperty.classList.add('blue');
   opponentsProperty.classList.add('blue');
-  document.getElementsByTagName('button')[0].disabled = false;
+  document.getElementById('nextButton').disabled = false;
 }
 
 function createCardContent(id, element, data) {
@@ -146,22 +145,70 @@ function createCard(id, data) {
   if (id == "player2") {
       card.style.visibility = "hidden";
   }
-  document.getElementsByTagName('button')[0].disabled = true;
+  document.getElementById('nextButton').disabled = true;
 }
 
 function createCards() {
   document.getElementById("deck").innerHTML = "";
   document.getElementById('message').innerHTML = "";
   var remainCards = firstArray.filter(i => !i.isSelected).length
+
   if(remainCards > 0) {
     createCard("player1", firstArray);
     createCard("player2", secondArray);
   }
   else {
-      document.getElementById("deck").innerHTML = "Game Over!";
+    document.getElementById('endGamePanel').classList.remove('hide');
+    document.getElementById('mainPanel').classList.add('hide');
   }
 }
 
 function startMusic() {
     myMusic.play();
+}
+
+function initializeGame() {
+  onStartButtonClick();
+  document.getElementById('startGamePanel').classList.add('hide');
+  document.getElementById('mainPanel').classList.remove('hide');
+  createCards();
+}
+
+var playerOneName;
+var playerTwoName;
+var playerOneIdFromDB;
+var playerTwoIdFromDB;
+
+function onStartButtonClick() {
+  playerOneName = document.getElementsByTagName('input')[0].value;
+  const url = `https://192.168.10.49/api/v1/HackTyphoon/Players/Add?name=${playerOneName}`;
+
+  fetch(url, { method: 'POST' }, playerOneIdFromDB)
+    .then(response => response.json())
+    .then(data => assignPlayerOneId(data));
+}
+
+function assignPlayerOneId(id) {
+  playerOneIdFromDB = id;
+  getOpponent(playerOneIdFromDB);
+}
+
+function assignPlayer(player) {
+  console.log("player ", player);
+  renderPlayerNames();
+}
+
+
+function getOpponent(id) {
+  const urlOpponent = `https://192.168.10.49/api/v1/HackTyphoon/Players/Random/${id}`;
+  fetch(urlOpponent, { method: 'GET' })
+    .then(response => response.json())
+    .then(data => assignPlayer(data))
+    .catch(err => { console.log(err.message) });
+}
+
+function renderPlayerNames() {
+  document.getElementById('playerOneId').innerHTML = `${playerOneName}<div id='player1wins'>`;
+  document.getElementById('playerTwoId').innerHTML = `${playerTwoName}<div id='player2wins'>`;
+  // document.getElementById('playerTwoId').innerHTML = playerTwoName;
 }
