@@ -120,7 +120,7 @@ function createCardContent(id, element, data) {
       <div id='vesselNameContainer'>${item.vesselName}</div>
       <div id='companyNameContainer'>${item.companyName}</div>
       <div id='vesselClassContainer'>AFRAMAX</div>
-      <img src='./pictures/${item.imo}.jpg'>
+      <img class='imageMask' src='./pictures/${item.imo}.jpg'>
     </div>`;
 
   yearBuilt.innerHTML = `Yearbuilt: <span>${item.yearBuilt}</span>`;

@@ -191,3 +191,9 @@ label {
     font-size: 21px;
     color: #203468;
 }
+
+.imageMask {
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+}
