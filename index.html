@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
 
-    <title>SignalAtou</title>
-    <meta name="description" content="The HTML5 Herald" />
-    <meta name="author" content="SitePoint" />
+<head>
+  <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="data/data.js"></script>
-  </head>
+  <title>SignalAtou</title>
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="SitePoint" />
 
-  <body onload="fetchData()", onclick="startMusic()">
-    <div id="startGamePanel"><input placeholder="Select a name to play.."/><button id="startButton" onclick="initializeGame()">start</button></div>
-    <div id="mainPanel" class="hide">
-      <div id="playerOneId" class="playerNames">Player 1<span id='player1wins'></span></div>
-      <div id="playerTwoId" class="playerNames">Player 2<span id='player2wins'></span></div>
-      <div id="deck"></div>
-      <button id="nextButton" onclick="createCards()" disabled=true>Next <span class="arrow"> </span></button>
-      <div id="message"></div>
-    </div>
-    <div id="endGamePanel" class="hide">End Game!</div>
-    <script src="js/script.js"></script>
-  </body>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="data/data.js"></script>
+</head>
+
+<body onload="fetchData()" , onclick="startMusic()">
+  <div class="startGame">
+    <div id="startGamePanel"><label></label><input placeholder="Select a name..." /><button id="startButton" onclick="initializeGame()">Start
+        a new Game <span class="arrow"> </span></button></div>
+  </div>
+  <div id="mainPanel" class="hide">
+    <div id="playerOneId" class="playerNames">Player 1<span id='player1wins'></span></div>
+    <div id="playerTwoId" class="playerNames">Player 2<span id='player2wins'></span></div>
+    <div id="deck"></div>
+    <button id="nextButton" onclick="createCards()" disabled=true>Next <span class="arrow"> </span></button>
+    <div id="message"></div>
+  </div>
+  <div id="endGamePanel" class="hide">End Game!</div>
+  <script src="js/script.js"></script>
+</body>
+
 </html>

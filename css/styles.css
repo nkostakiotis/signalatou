@@ -6,9 +6,53 @@ body {
     color: #53545A;    
     background-color: #f6f7f8;
 }
-button {
+button, button:focus,
+input, input:focus {
     outline: none;
 }
+
+.startGame{
+    width: 1200px;
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px 0 #D9D9DA;
+    text-align: center;
+}
+
+input {
+    background: #ffffff;
+    border-radius: 3px;
+    border: solid 1px #3085e6;
+    color:  #3085e6;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 30px auto 10px auto;
+    padding: 12px;
+    display: block;
+    width: 500px;
+    font-family: 'Lato', sans-serif;
+}
+::-webkit-input-placeholder {
+    color: #bebebe;
+    opacity: 1;
+  }
+  
+  :-ms-input-placeholder {
+    color: #bebebe;
+    opacity: 1;
+  }
+  
+  ::-ms-input-placeholder {
+    color: #bebebe;
+    opacity: 1;
+  }
+  
+  ::placeholder {
+    color: #bebebe;
+    opacity: 1;
+  }
 #mainPanel {
     height: 800px;
     width: 1200px;
@@ -51,7 +95,7 @@ button {
 }
 #player2 {
 }
-#nextButton {
+#nextButton, #startButton {
     background: #4da4fa;
     border-radius: 3px;
     border: solid 1px #3085e6;
@@ -65,7 +109,7 @@ button {
     width: 200px;
     font-family: 'Lato', sans-serif;
 }
-#nextButton:hover {
+#nextButton:hover, #startButton {
     background: #3085e6;
     border: solid 1px #3085e6;
   }
