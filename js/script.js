@@ -46,9 +46,9 @@ function onPropertyClick(event) {
   var otherPlayersCards = document.getElementById(otherPlayer);
   var currentPlayersCards = document.getElementById(currentPlayer);
 
-  var opponentsProperty = otherPlayersCards.getElementsByTagName("span")[key + 1]
+  var opponentsProperty = otherPlayersCards.getElementsByTagName("span")[key]
   var opponentPropertyValue = opponentsProperty.innerHTML;
-  var currentPlayerProperty = currentPlayersCards.getElementsByTagName("span")[key + 1]
+  var currentPlayerProperty = currentPlayersCards.getElementsByTagName("span")[key]
 
   var message = "Isopalia";
   if (value > opponentPropertyValue) {
@@ -92,11 +92,14 @@ function onPropertyClick(event) {
 
 function createCardContent(id, element, data) {
   var vesselName = document.createElement("div");
-  var deadweight = document.createElement("div");
   var yearBuilt = document.createElement("div");
+  var deadweight = document.createElement("div");
+  var draught = document.createElement("div");
   var total_main_hp = document.createElement("div");
+  var voyageLeg = document.createElement("div");
+  var speed = document.createElement("div");
 
-  var properties = [deadweight, yearBuilt, total_main_hp];
+  var properties = [yearBuilt, deadweight, draught, total_main_hp, total_main_hp, voyageLeg, speed];
   properties.forEach(property => (property.className = "cardProperties"));
 
   element.appendChild(vesselName);
@@ -106,10 +109,19 @@ function createCardContent(id, element, data) {
   var item = availableData[Math.floor(Math.random() * availableData.length)];
   item.isSelected = true;
 
-  vesselName.innerHTML = `Vessel Name: <span>${item.vesselName}</span>`;
-  deadweight.innerHTML = `Speed: <span>${item.speed}</span>`;
+  vesselName.innerHTML = 
+    `<div>
+      <div id='vesselNameContainer'>${item.vesselName}</div>
+      <div id='companyNameContainer'>${item.companyName}</div>
+      <div id='vesselClassContainer'>AFRAMAX</div>
+    </div>`;
+
   yearBuilt.innerHTML = `Yearbuilt: <span>${item.yearBuilt}</span>`;
-  total_main_hp.innerHTML = `Horse Power: <span>${item.horsePower}</span>`;
+  deadweight.innerHTML = `Deadweight: <span>${item.deadweight}</span>`;
+  draught.innerHTML = `Draught: <span>${item.draught}</span>`;
+  total_main_hp.innerHTML = `Engine Horsepower: <span>${item.horsePower}</span>`;
+  voyageLeg.innerHTML = `Voyage Leg: <span>${item.status}</span>`;
+  speed.innerHTML = `Speed: <span>${item.speed}</span>`;
   properties.forEach((property, index) => {
     var item = property.getElementsByTagName("span")[0];
     item.onclick = onPropertyClick;
