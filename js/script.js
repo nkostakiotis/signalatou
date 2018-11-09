@@ -121,6 +121,7 @@ function createCardContent(id, element, data) {
       <div id='vesselNameContainer'>${item.vesselName}</div>
       <div id='companyNameContainer'>${item.companyName}</div>
       <div id='vesselClassContainer'>AFRAMAX</div>
+      <img src='./pictures/${item.imo}.jpg'>
     </div>`;
 
   yearBuilt.innerHTML = `Yearbuilt: <span>${item.yearBuilt}</span>`;
@@ -199,7 +200,6 @@ function assignPlayerOneId(id) {
 }
 
 function assignPlayerTwo(player) {
-  console.log(player);
   playerTwoName = player.playerName + ` (${player.numberOfWins} wins)`;
   playerTwoIdFromDB = player.id;
   renderPlayerNames();
@@ -238,6 +238,7 @@ function getLeaderBoard() {
     });
 
 }
+
 function fillLeaderBoard(data){
   var leaderinner="<table><th>Leader Board<th>";
   var newData = data;
