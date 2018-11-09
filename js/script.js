@@ -46,12 +46,16 @@ function onPropertyClick(event) {
   var otherPlayersCards = document.getElementById(otherPlayer);
   var currentPlayersCards = document.getElementById(currentPlayer);
 
-  var opponentsProperty = otherPlayersCards.getElementsByTagName("span")[key]
+  var opponentsProperty = otherPlayersCards.getElementsByTagName("span")[key];
   var opponentPropertyValue = opponentsProperty.innerHTML;
-  var currentPlayerProperty = currentPlayersCards.getElementsByTagName("span")[key]
+
+  var currentPlayerProperty = currentPlayersCards.getElementsByTagName("span")[key];
+  var currentPlayerPropertyValue = currentPlayerProperty.innerHTML;
 
   var message = "Isopalia";
-  if (value > opponentPropertyValue) {
+  if (opponentPropertyValue == currentPlayerPropertyValue){
+
+  } else if (value > opponentPropertyValue || value.trim() == "Laden") {
     wins.forEach(w => {
       if (w.id == currentPlayer) {
         w.wins++;
@@ -62,8 +66,7 @@ function onPropertyClick(event) {
     message = "You won the current round! :-)";
     currentPlayerProperty.classList.add('blue');
     opponentsProperty.classList.add('red');
-  }
-  if (value < opponentPropertyValue) {
+  } else if (value < opponentPropertyValue || value.trim() == "Laden") {
     wins.forEach(w => {
         if (w.id == otherPlayer) {
           w.wins++;
@@ -99,7 +102,7 @@ function createCardContent(id, element, data) {
   var voyageLeg = document.createElement("div");
   var speed = document.createElement("div");
 
-  var properties = [yearBuilt, deadweight, draught, total_main_hp, total_main_hp, voyageLeg, speed];
+  var properties = [yearBuilt, deadweight, draught, total_main_hp, voyageLeg, speed];
   properties.forEach(property => (property.className = "cardProperties"));
 
   element.appendChild(vesselName);
