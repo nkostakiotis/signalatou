@@ -75,7 +75,7 @@ label {
     font-size: 21px;
     display: inline-block;
     width: 470px;
-    margin-right: 50px
+    margin-left: 40px;
 }
 
 #player1wins,
@@ -196,4 +196,35 @@ label {
     width: 400px;
     height: 250px;
     object-fit: cover;
+}
+
+#vaggelisCard {
+    background-color: #F1F1F1;
+    padding-top: 50px;
+    padding-bottom: 24px;
+    box-shadow: none!important;
+}
+
+#deck {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+#LeaderBoard {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 30px 0 #D9D9DA;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+#endGamePanel {
+    font-weight: 700;
+    font-size: 21px;
+    color: #203468;
+    text-align: center;
 }
