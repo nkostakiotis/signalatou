@@ -31,7 +31,6 @@ function fetchData() {
     fetch('https://192.168.10.49/api/v1/HackTyphoon/Cards/Random/10').then(response => {
         return response.json();
     }).then(data => {
-        console.log(data);
         vesselData = data;
         firstArray = vesselData.slice(0, vesselData.length / 2);
         secondArray = vesselData.slice(vesselData.length / 2, vesselData.length);
@@ -56,7 +55,7 @@ function onPropertyClick(event) {
   var currentPlayerProperty = currentPlayersCards.getElementsByTagName("span")[key];
   var currentPlayerPropertyValue = currentPlayerProperty.innerHTML;
 
-  var message = "Isopalia";
+  var message = "Draw!";
   if (opponentPropertyValue == currentPlayerPropertyValue){
 
   } else if (value > opponentPropertyValue || value.trim() == "Laden") {
@@ -200,7 +199,7 @@ function assignPlayerOneId(id) {
 }
 
 function assignPlayerTwo(player) {
-  playerTwoName = player.playerName + ` (${player.numberOfWins} wins)`;
+  playerTwoName = player.playerName + ` (${player.numberOfWins} total wins)`;
   playerTwoIdFromDB = player.id;
   renderPlayerNames();
 }
@@ -227,15 +226,11 @@ function assignPlayerOneId(id) {
 
 
 function getLeaderBoard() {
-  
   const url = `https://192.168.10.49/api/v1/HackTyphoon/Players/Rank`;
 
   fetch(url, { method: 'GET' })
     .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      fillLeaderBoard(data);
-    });
+    .then(data => fillLeaderBoard(data));
 
 }
 
@@ -257,7 +252,7 @@ function fillLeaderBoard(data){
 function saveWinningGame(playerOneIdFromDB, playerTwoIdFromDB){
   const urlSaveGame = `https://192.168.10.49/api/v1/HackTyphoon/Games/New`;
   var dataToSave = "{\"Player1ID\":"+`${playerOneIdFromDB}`+",\"Player2ID\":"+`${playerTwoIdFromDB}`+",\"WinPlayerID\":3}";
-  console.log(dataToSave);
+
   fetch(urlSaveGame, { 
     method: 'POST',
     body:`"data": "${dataToSave}"` })
